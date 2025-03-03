@@ -10,10 +10,13 @@ import { useEffect, useState } from "react";
 import EducationStats from "../components/education/education-stats";
 import ServicesComponent from "../components/common/services.component";
 import QuoteRequest from "../components/quote-request/quote-request.component";
+import { VisitService } from "@/services/visit.service";
 
 export default function EducationPage() {
   const [services, setServices] = useState([]);
-
+  useEffect(() => {
+    VisitService.trackVisit();
+  }, []);
   useEffect(() => {
     const fetchServices = async () => {
       const { data } = await ServicesService.getAll("edu");

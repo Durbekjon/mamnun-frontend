@@ -22,7 +22,6 @@ export default function Dashboard() {
     tourPackage: 0,
   });
   const [visits, setVisits] = useState<any[]>([]);
-
   useEffect(() => {
     async function fetchData() {
       try {
