@@ -1,0 +1,25 @@
+body {
+  background-color: #fffef9;
+}
+.footer-row {
+  /* display: flex; */
+  /* justify-content: space-around; */
+  border-top: 1px solid #000;
+  column-count: 3;
+  column-gap: 40px;
+  column-rule: 1px solid #000;
+}
+
+.footer-row .footer-column {
+  padding: 20px;
+}
+.footer-row .footer-column p {
+  font-size: 17px;
+  font-weight: 200;
+}
+.copyright {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}

@@ -1,0 +1,31 @@
+.home-payment-types-container {
+  max-width: 1118px;
+  margin: auto;
+}
+.home-payment-types-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  gap: 269px;
+}
+.column {
+  padding: 15px;
+}
+.slick-list {
+  min-height: 100%;
+}
+section {
+  width: 1263px;
+  margin: auto;
+}
+section video {
+  margin: 35px 0;
+  padding: 35px 0;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+.row img {
+  max-height: 100%;
+}
