@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutComponent() {
   return (
-    <section className="home-about">
+    <section className="home-about mamnun-container">
       <div className="home-about-container">
         <h3 className="home-about-title">Who We Are?</h3>
         <p className="home-about-text">
