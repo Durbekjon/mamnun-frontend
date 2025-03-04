@@ -1,4 +1,6 @@
-import './style.css'
+import FacebookIcon from "../iconic-components/facebook";
+import InstagramIcon from "../iconic-components/instagram";
+import "./style.css";
 export default function FooterComponent() {
   return (
     <div className="mamnun-container">
@@ -16,6 +18,14 @@ export default function FooterComponent() {
         <div className="footer-column">
           <p>+998949181305</p>
           <p>info@mamnunagency.com</p>
+          <div className="social-media-links flex flex-1 gap-1">
+            <a href="https://www.instagram.com/mamnunagency?igsh=bzk0dGt4anhqbTlw">
+              <InstagramIcon />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61572399132304">
+              <FacebookIcon />
+            </a>
+          </div>
         </div>
       </div>
       <div className="copyright">
