@@ -8,6 +8,7 @@ import Header from "../components/header/header";
 import "./style.css";
 import { VisitService } from "@/services/visit.service";
 import { useEffect } from "react";
+import Trustpilot from "../components/common/trustpilot";
 export default function About() {
   useEffect(() => {
     VisitService.trackVisit();
@@ -17,6 +18,7 @@ export default function About() {
       <Header currentPage={"about"} />
       <AboutHeroComponent />
       <InfoSection />
+      <Trustpilot />
       <CollabsComponent />
       <PaymentTypesComponent />
       <FooterComponent />

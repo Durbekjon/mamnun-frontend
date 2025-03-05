@@ -11,6 +11,7 @@ import EducationStats from "../components/education/education-stats";
 import ServicesComponent from "../components/common/services.component";
 import QuoteRequest from "../components/quote-request/quote-request.component";
 import { VisitService } from "@/services/visit.service";
+import Trustpilot from "../components/common/trustpilot";
 
 export default function EducationPage() {
   const [services, setServices] = useState([]);
@@ -33,6 +34,8 @@ export default function EducationPage() {
       <ServicesComponent services={services} />
       <EducationStats currentPage="education" />
       <QuoteRequest currentPage="education" />
+      <Trustpilot />
+
       <CollabsComponent />
       <PaymentTypesComponent />
       <FooterComponent />

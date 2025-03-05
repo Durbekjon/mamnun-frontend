@@ -11,6 +11,7 @@ import PaymentTypesComponent from "../components/common/payment-types.component"
 import RegistrationComponent from "./components/registration.component";
 import { VisitService } from "@/services/visit.service";
 import { useEffect } from "react";
+import Trustpilot from "../components/common/trustpilot";
 export default function EduFair() {
   useEffect(() => {
     VisitService.trackVisit();
@@ -21,6 +22,7 @@ export default function EduFair() {
       <InvitationComponent />
       <BenefitsComponent />
       <RegistrationComponent />
+      <Trustpilot />
       <ContactComponent currentPage="edufair" />
       <CollabsComponent />
       <PaymentTypesComponent />

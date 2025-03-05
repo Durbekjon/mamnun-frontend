@@ -10,6 +10,7 @@ import "./index.css";
 import ContactComponent from "./components/contact/contact.component";
 import { useEffect } from "react";
 import { VisitService } from "@/services/visit.service";
+import Trustpilot from "./components/common/trustpilot";
 
 export default function Home() {
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function Home() {
       <HeroComponent />
       <Video />
       <AboutComponent />
+      <Trustpilot />
       <ContactComponent currentPage="home" />
       <CollabsComponent />
       <PaymentTypesComponent />
