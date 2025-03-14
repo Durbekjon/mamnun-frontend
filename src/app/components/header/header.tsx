@@ -6,7 +6,8 @@ import { useHeader } from "@/hooks/useHeader";
 
 const Header = ({ currentPage }: { currentPage: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { announcement, info, fetchInformations } = useHeader();
+  const { info, fetchInformations, event, fetchEvent } = useHeader();
+
   const pages = ["home", "education", "travel", "edufair"];
   const navLinks = [
     { href: "/", label: "Home", key: "home" },
@@ -21,8 +22,8 @@ const Header = ({ currentPage }: { currentPage: string }) => {
 
   useEffect(() => {
     fetchInformations();
+    fetchEvent();
   }, []);
-
   return (
     <div className="header">
       <header className="py-4 px-4 md:px-8 lg:px-16 mamnun-container">
@@ -31,12 +32,11 @@ const Header = ({ currentPage }: { currentPage: string }) => {
             <img src="/images/logo.png" alt="" width="257" height="127" />
           </Link>
 
-          {/* Announcement */}
-          {announcement && (
+          {event && event?.visible && (
             <div className="col">
               <div className="fflex items-center justify-center announcement">
-                <a href={announcement.link} className="announcement-name">
-                  {announcement.name}
+                <a href={"/edufair"} className="announcement-name">
+                  {event?.eventName}
                 </a>
               </div>
             </div>

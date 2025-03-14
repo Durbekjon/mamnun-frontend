@@ -1,11 +1,18 @@
-export default function RegistrationComponent() {
+import { formatDate, getOrdinalSuffix } from "./invitation.component";
+
+export default function RegistrationComponent({
+  registrationDeadline,
+}: {
+  registrationDeadline: string;
+}) {
   return (
     <div className="edufair-container">
       <h2 className="main-text">
         If you wish to participate, please fill out the form below
       </h2>
       <p className="registration-deadline">
-        The registration closes: <span className="text-bold">April 3rd</span>
+        The registration closes:{" "}
+        <span className="text-bold">{formatDate(registrationDeadline)}</span>
       </p>
 
       <div className="registration-buttons">

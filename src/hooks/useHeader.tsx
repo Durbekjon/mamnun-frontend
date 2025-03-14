@@ -1,11 +1,9 @@
+import { EventService } from "@/services/event.service";
 import { InfoService } from "@/services/info.service";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const useHeader = () => {
-  const [announcement] = useState({
-    name: "EduFair 2025",
-    link: "/edufair",
-  });
+  const [event, setEvent] = useState<any>(null);
 
   const [info, setInfo] = useState({
     phoneNumber: "+998949181305",
@@ -17,5 +15,10 @@ export const useHeader = () => {
     setInfo(data);
   };
 
-  return { announcement, info, fetchInformations };
+  const fetchEvent = async () => {
+    const { data } = await EventService.getEvent();
+    setEvent(data);
+  };
+
+  return { info, fetchInformations, event, fetchEvent };
 };

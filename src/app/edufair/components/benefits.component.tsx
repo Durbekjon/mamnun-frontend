@@ -1,4 +1,8 @@
-export default function BenefitsComponent() {
+interface BenefitsComponentProps {
+  studentBenefits: { title: string; description: string }[];
+  institutionBenefits: { title: string; description: string }[];
+}
+export default function BenefitsComponent(props: BenefitsComponentProps) {
   return (
     <div className="edufair-container">
       <div className="images-section">
@@ -18,80 +22,24 @@ export default function BenefitsComponent() {
         <div className="benefits-column">
           <h2>Benefits for Students</h2>
           <ul>
-            <li>
-              <strong>Explore Diverse Programs</strong>Students can discover a
-              wide range of educational opportunities, including language
-              courses, short-term programs, teacher training, and degree
-              programs, all in one location.​
-            </li>
-            <li>
-              <strong>Direct Interaction with Representatives</strong>
-              Attendees have the chance to meet face-to-face with university
-              representatives, allowing for personalized discussions about
-              programs, admissions, and campus life.
-            </li>
-            <li>
-              <strong>Insightful Guidance</strong>Students and their parents can
-              gain valuable insights into the application requirements,
-              deadlines, and procedures, scholarship opportunities, and the
-              specifics of studying abroad, helping them make informed
-              decisions.
-            </li>
-            <li>
-              <strong>Networking Opportunities</strong>The fair provides a
-              platform for students to connect with peers who share similar
-              academic interests, fostering a supportive community and potential
-              collaborations.
-            </li>
-            <li>
-              <strong>Access to Resources</strong>Participants can gather
-              information on internships and career prospects, enhancing their
-              understanding of how different programs can impact their future.
-            </li>
-            <li>
-              <strong>Comparative Analysis of Institutions</strong>Attending the
-              fair allows students to compare various institutions and programs
-              side by side, making it easier to evaluate their options and
-              choose the best fit.
-            </li>
+            {props?.studentBenefits?.map((benefit) => (
+              <li key={benefit.title}>
+                <strong>{benefit.title}</strong>
+                {benefit.description}
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className="benefits-column">
           <h2>Benefits for Institutions</h2>
           <ul>
-            <li>
-              <strong>Brand Visibility</strong>Participating in the Edu Fair
-              enhances the institution's visibility in the local market, helping
-              to establish or strengthen its brand presence in Uzbekistan.
-            </li>
-            <li>
-              <strong>Recruitment of Talented Students</strong>Universities can
-              meet a motivated audience of prospective students, allowing them
-              to identify and recruit individuals who are a good fit for their
-              programs.
-            </li>
-            <li>
-              <strong>Showcasing Offerings</strong>Institutions have the
-              opportunity to present their unique programs, campus culture, and
-              success stories, making a strong impression on potential students.
-            </li>
-            <li>
-              <strong>Building Relationships</strong>Engaging with students and
-              their families helps universities establish connections and build
-              relationships that can lead to future enrollments.
-            </li>
-            <li>
-              <strong>Market Insights</strong>Universities can gather feedback
-              and insights from students about their interests and needs,
-              helping them tailor their offerings to better meet market demands.
-            </li>
-            <li>
-              <strong>Collaboration Opportunities</strong>The fair allows
-              institutions to network with other educational organizations and
-              local study agents, fostering potential partnerships and
-              collaborations in the region.
-            </li>
+            {props?.institutionBenefits?.map((benefit) => (
+              <li key={benefit.title}>
+                <strong>{benefit.title}</strong>
+                {benefit.description}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
