@@ -32,7 +32,7 @@ export default function EducationPage() {
       <MainComponent currentPage="education" />
       <ServicesComponent services={services} />
       <EducationStats currentPage="education" />
-      <QuoteRequest currentPage="education" />
+      <QuoteRequest currentPage="education" services={services} />
       <CollabsComponent />
       <PaymentTypesComponent />
       <FooterComponent />

@@ -4,29 +4,18 @@ import "./style.css";
 import { QuoteRequestService } from "@/services/quote-request.service";
 import {
   CreateQuoteRequestDto,
-  RequestTypeValues,
   QuoteType,
-  RequestType,
 } from "@/interfaces/create-quote-request";
 
-// ✅ Correctly maps frontend request types to match backend expectations
-const REQUEST_TYPES: Record<RequestType, string> = {
-  INTERNSHIPS: "INTERNSHIPS",
-  TEACHER_TRAININGS: "TEACHER_TRAININGS",
-  SHORT_TERM_PROGRAMS: "SHORT_TERM_PROGRAMS",
-  DEGREE_PROGRAMS: "DEGREE_PROGRAMS",
-  TOUR_PACKAGE: "TOUR_PACKAGE",
-  FULL_VIP_ASSISTANCE: "FULL_VIP_ASSISTANCE",
-  MEET_AND_GREET_FAST_TRACK: "MEET_AND_GREET_FAST_TRACK",
-  GROUND_TRANSPORTATION: "GROUND_TRANSPORTATION",
-};
-
-export default function QuoteRequest(props: { currentPage: string }) {
+export default function QuoteRequest(props: {
+  currentPage: string;
+  services: { id: number; title: string }[];
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
-  const [requestType, setRequestType] = useState<RequestType>("TOUR_PACKAGE"); // ✅ Fixed case
+  const [serviceId, setServiceId] = useState<number>(1); // ✅ Fixed case
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +31,7 @@ export default function QuoteRequest(props: { currentPage: string }) {
       phoneNumber: phoneNumber.trim() || undefined,
       message: message.trim(),
       quoteType: props.currentPage === "education" ? "EDU" : "TRAVEL",
-      requestType, // ✅ Now directly compatible with backend
+      serviceId,
     };
 
     try {
@@ -52,7 +41,7 @@ export default function QuoteRequest(props: { currentPage: string }) {
         setEmail("");
         setPhoneNumber("");
         setMessage("");
-        setRequestType("TOUR_PACKAGE"); // ✅ Reset with correct enum value
+        setServiceId(1);
         alert("Quote request submitted successfully!");
       } else {
         alert("Submission failed. Please try again.");
@@ -65,7 +54,6 @@ export default function QuoteRequest(props: { currentPage: string }) {
   return (
     <section className="quote-section" id="quote">
       <div className="quote-container">
-        {/* Left Side - Contact Info */}
         <div className="quote-info">
           <h1 className="quote-title">Get a Quote</h1>
           <div className="quote-details">
@@ -96,7 +84,6 @@ export default function QuoteRequest(props: { currentPage: string }) {
           </div>
         </div>
 
-        {/* Right Side - Quote Request Form */}
         <div className="quote-form">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -131,15 +118,13 @@ export default function QuoteRequest(props: { currentPage: string }) {
             <div className="form-group">
               <label>Request Type</label>
               <select
-                value={requestType}
-                onChange={
-                  (e) => setRequestType(e.target.value as RequestType) // ✅ Ensures correct type
-                }
+                value={serviceId}
+                onChange={(e) => setServiceId(Number(e.target.value))}
                 required
               >
-                {Object.entries(REQUEST_TYPES).map(([key, value]) => (
-                  <option key={key} value={key}>
-                    {value.replace(/_/g, " ")} {/* ✅ Formats UI display */}
+                {props.services.map((service) => (
+                  <option key={service.id} value={service.id}>
+                    {service.title}
                   </option>
                 ))}
               </select>
